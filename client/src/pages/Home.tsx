@@ -1,5 +1,5 @@
 import { useEffect, useState, useCallback } from "react";
-import { Menu, X, Heart, History } from "lucide-react";
+import { Menu, X, Heart, History, Sliders } from "lucide-react";
 import {
   getTrendingAnime,
   getPopularAnime,
@@ -15,6 +15,7 @@ import AnimeCard from "@/components/AnimeCard";
 import AnimeDetailModal from "@/components/AnimeDetailModal";
 import VideoPlayerModal from "@/components/VideoPlayerModal";
 import SearchBar from "@/components/SearchBar";
+import GenreFilter from "@/components/GenreFilter";
 import { toast } from "sonner";
 
 export default function Home() {
@@ -29,6 +30,9 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isSearching, setIsSearching] = useState(false);
+  const [selectedGenres, setSelectedGenres] = useState<number[]>([]);
+  const [isGenreFilterOpen, setIsGenreFilterOpen] = useState(false);
+  const [filteredAnime, setFilteredAnime] = useState<AnimeItem[]>([]);
   const { favorites } = useFavorites();
   const { history } = useWatchHistory();
 
@@ -68,6 +72,23 @@ export default function Home() {
 
     loadInitialData();
   }, []);
+
+  // Filter anime by selected genres
+  useEffect(() => {
+    if (selectedGenres.length === 0) {
+      setFilteredAnime([]);
+      return;
+    }
+
+    const allAnime = [...trendingAnime, ...popularAnime, ...topRatedAnime, ...actionAnime, ...romanceAnime];
+    const uniqueAnime = Array.from(new Map(allAnime.map((item) => [item.id, item])).values());
+    
+    const filtered = uniqueAnime.filter((anime) =>
+      selectedGenres.some((genreId) => anime.genre_ids?.includes(genreId))
+    );
+    
+    setFilteredAnime(filtered);
+  }, [selectedGenres, trendingAnime, popularAnime, topRatedAnime, actionAnime, romanceAnime]);
 
   // Handle anime selection
   const handleSelectAnime = useCallback(async (anime: AnimeItem) => {
@@ -147,6 +168,15 @@ export default function Home() {
 
           {/* Right Actions */}
           <div className="flex items-center gap-4">
+            {/* Genre Filter Button */}
+            <button
+              onClick={() => setIsGenreFilterOpen(true)}
+              className="hidden sm:flex items-center gap-2 px-4 py-2 rounded-lg bg-white/10 hover:bg-cyan-500/30 text-white transition-all duration-200"
+            >
+              <Sliders size={20} />
+              <span className="text-sm">Genres</span>
+            </button>
+
             {/* Favorites Button */}
             <button
               className="hidden sm:flex items-center gap-2 px-4 py-2 rounded-lg bg-white/10 hover:bg-purple-500/30 text-white transition-all duration-200"
@@ -313,6 +343,26 @@ export default function Home() {
           onPlayClick={handlePlayClick}
         />
 
+        {/* Filtered Results */}
+        {filteredAnime.length > 0 && (
+          <section>
+            <h2 className="text-2xl font-bold gradient-text mb-4">
+              Filtered Results ({filteredAnime.length})
+            </h2>
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+              {filteredAnime.map((anime) => (
+                <div key={anime.id} className="h-56">
+                  <AnimeCard
+                    anime={anime}
+                    onSelect={handleSelectAnime}
+                    onPlayClick={handlePlayClick}
+                  />
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
         {/* Search Results */}
         {isSearching && (
           <section>
@@ -362,6 +412,14 @@ export default function Home() {
         anime={playingAnime}
         isOpen={!!playingAnime}
         onClose={() => setPlayingAnime(null)}
+      />
+
+      {/* Genre Filter Modal */}
+      <GenreFilter
+        selectedGenres={selectedGenres}
+        onGenresChange={setSelectedGenres}
+        isOpen={isGenreFilterOpen}
+        onClose={() => setIsGenreFilterOpen(false)}
       />
 
       {/* Footer */}
