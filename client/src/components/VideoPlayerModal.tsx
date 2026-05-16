@@ -16,6 +16,33 @@ export default function VideoPlayerModal({
   const [showSidebar, setShowSidebar] = useState(false);
   const [isPlaying, setIsPlaying] = useState(true);
 
+  // Prevent new tab opens and external navigation
+  useEffect(() => {
+    if (!isOpen) return;
+
+    // Override window.open to prevent new tabs
+    const originalOpen = window.open;
+    window.open = function() {
+      console.warn("Opening new tabs is disabled in the player");
+      return null;
+    };
+
+    // Prevent right-click context menu that might allow opening in new tab
+    const handleContextMenu = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      if (target.id === "anime-player" || target.closest("#anime-player")) {
+        e.preventDefault();
+      }
+    };
+
+    document.addEventListener("contextmenu", handleContextMenu);
+
+    return () => {
+      window.open = originalOpen;
+      document.removeEventListener("contextmenu", handleContextMenu);
+    };
+  }, [isOpen]);
+
   if (!isOpen || !anime) return null;
 
   const streamingUrl = getStreamingUrl(anime.imdb_id);
@@ -77,13 +104,14 @@ export default function VideoPlayerModal({
         {/* Video Player - Full width when sidebar is hidden */}
         <div className={`transition-all duration-300 ${showSidebar ? "w-2/3" : "w-full"}`}>
           <div className="w-full h-full bg-black flex items-center justify-center">
-            {/* Streamimdb Embed */}
+            {/* Streamimdb Embed - Sandboxed to prevent external navigation */}
             <iframe
               id="anime-player"
               src={streamingUrl}
               className="w-full h-full border-0"
               allowFullScreen
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              sandbox="allow-same-origin allow-scripts allow-presentation allow-autoplay"
               title={anime.title || anime.name || "Anime Player"}
             />
           </div>
@@ -203,8 +231,15 @@ export default function VideoPlayerModal({
                 </div>
               )}
 
-              {/* Controls Hint */}
+              {/* Security Notice */}
               <div className="pt-4 border-t border-white/10">
+                <p className="text-white/50 text-xs">
+                  🔒 <strong>Protected:</strong> External links and new tabs are blocked for your safety
+                </p>
+              </div>
+
+              {/* Controls Hint */}
+              <div className="pt-2">
                 <p className="text-white/50 text-xs">
                   💡 <strong>Tip:</strong> Press SPACE to pause/play, ESC to close
                 </p>
