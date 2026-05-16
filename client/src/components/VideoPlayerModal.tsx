@@ -1,6 +1,6 @@
-import { X, Volume2, Maximize, Settings } from "lucide-react";
+import { X } from "lucide-react";
+import { useState, useEffect } from "react";
 import { AnimeDetail, getStreamingUrl } from "@/lib/tmdb";
-import { useState } from "react";
 
 interface VideoPlayerModalProps {
   anime: AnimeDetail | null;
@@ -13,8 +13,8 @@ export default function VideoPlayerModal({
   isOpen,
   onClose,
 }: VideoPlayerModalProps) {
-  const [isFullscreen, setIsFullscreen] = useState(false);
-  const [showControls, setShowControls] = useState(true);
+  const [showSidebar, setShowSidebar] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(true);
 
   if (!isOpen || !anime) return null;
 
@@ -22,12 +22,12 @@ export default function VideoPlayerModal({
 
   if (!streamingUrl) {
     return (
-      <div className="fixed inset-0 z-50 flex items-center justify-center bg-black">
+      <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm">
         <div className="text-center">
           <p className="text-white text-xl mb-4">Streaming URL not available</p>
           <button
             onClick={onClose}
-            className="px-6 py-2 bg-purple-500 text-white rounded-lg"
+            className="px-6 py-2 bg-purple-500 hover:bg-purple-600 text-white rounded-lg transition-colors"
           >
             Close
           </button>
@@ -36,145 +36,190 @@ export default function VideoPlayerModal({
     );
   }
 
-  const handleFullscreen = () => {
-    const playerElement = document.getElementById("anime-player");
-    if (playerElement) {
-      if (!document.fullscreenElement) {
-        playerElement.requestFullscreen().catch((err) => {
-          console.error("Error attempting to enable fullscreen:", err);
-        });
-        setIsFullscreen(true);
-      } else {
-        document.exitFullscreen();
-        setIsFullscreen(false);
-      }
+  // Detect when user pauses the video via mouse movement
+  const handleMouseMove = () => {
+    setShowSidebar(true);
+    // Auto-hide sidebar after 3 seconds of inactivity
+    const timeout = setTimeout(() => {
+      setShowSidebar(false);
+    }, 3000);
+    return () => clearTimeout(timeout);
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === " ") {
+      // Space bar toggles play/pause
+      setIsPlaying(!isPlaying);
+      setShowSidebar(!isPlaying); // Show sidebar when paused
+    }
+    if (e.key === "Escape") {
+      onClose();
     }
   };
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black"
-      onClick={onClose}
+      className="fixed inset-0 z-50 bg-black"
+      onMouseMove={handleMouseMove}
+      onKeyDown={handleKeyDown}
+      tabIndex={0}
     >
-      <div
-        className="relative w-full h-full flex items-center justify-center"
-        onClick={(e) => e.stopPropagation()}
-        onMouseMove={() => setShowControls(true)}
-        onMouseLeave={() => setShowControls(false)}
+      {/* Close Button */}
+      <button
+        onClick={onClose}
+        className="absolute top-4 right-4 z-10 p-2 bg-black/50 hover:bg-black/80 rounded-lg transition-colors"
       >
-        {/* Close Button */}
-        <button
-          onClick={onClose}
-          className={`absolute top-4 right-4 z-20 p-2 bg-purple-500/50 hover:bg-purple-500 text-white rounded-full transition-all duration-200 ${
-            showControls ? "opacity-100" : "opacity-0"
-          }`}
-        >
-          <X size={24} />
-        </button>
+        <X size={24} className="text-white" />
+      </button>
 
-        {/* Video Player Container */}
-        <div
-          id="anime-player"
-          className="relative w-full h-full bg-black flex items-center justify-center"
-        >
-          {/* Iframe Embed */}
-          <iframe
-            src={streamingUrl}
-            title={anime.title || anime.name}
-            className="w-full h-full border-0"
-            allowFullScreen
-            allow="autoplay; encrypted-media"
-          />
-
-          {/* Player Controls Overlay */}
-          <div
-            className={`absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black via-black/50 to-transparent p-4 transition-opacity duration-300 ${
-              showControls ? "opacity-100" : "opacity-0"
-            }`}
-          >
-            {/* Title and Info */}
-            <div className="mb-4">
-              <h3 className="text-white font-bold text-lg">
-                {anime.title || anime.name}
-              </h3>
-              <p className="text-white/60 text-sm">
-                {anime.number_of_seasons && `${anime.number_of_seasons} Seasons`}
-                {anime.number_of_episodes && ` • ${anime.number_of_episodes} Episodes`}
-              </p>
-            </div>
-
-            {/* Control Buttons */}
-            <div className="flex items-center justify-between">
-              <div className="flex gap-2">
-                <button className="p-2 bg-white/10 hover:bg-cyan-500/50 text-white rounded-lg transition-all duration-200">
-                  <Volume2 size={20} />
-                </button>
-                <button className="p-2 bg-white/10 hover:bg-cyan-500/50 text-white rounded-lg transition-all duration-200">
-                  <Settings size={20} />
-                </button>
-              </div>
-
-              <button
-                onClick={handleFullscreen}
-                className="p-2 bg-white/10 hover:bg-cyan-500/50 text-white rounded-lg transition-all duration-200"
-              >
-                <Maximize size={20} />
-              </button>
-            </div>
+      {/* Main Player Container */}
+      <div className="w-full h-full flex">
+        {/* Video Player - Full width when sidebar is hidden */}
+        <div className={`transition-all duration-300 ${showSidebar ? "w-2/3" : "w-full"}`}>
+          <div className="w-full h-full bg-black flex items-center justify-center">
+            {/* Streamimdb Embed */}
+            <iframe
+              id="anime-player"
+              src={streamingUrl}
+              className="w-full h-full border-0"
+              allowFullScreen
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              title={anime.title || anime.name || "Anime Player"}
+            />
           </div>
         </div>
 
-        {/* Info Sidebar (Desktop) */}
-        <div className="hidden lg:flex absolute right-0 top-0 bottom-0 w-80 bg-gradient-to-l from-slate-900 to-transparent p-6 overflow-y-auto">
-          <div className="space-y-6">
-            <div>
-              <h4 className="text-white/60 text-sm mb-2">Now Playing</h4>
-              <p className="text-white font-bold">{anime.title || anime.name}</p>
-            </div>
-
-            {anime.overview && (
+        {/* Info Sidebar - Only visible when paused or on mouse move */}
+        {showSidebar && (
+          <div className="w-1/3 bg-gradient-to-b from-slate-900 to-slate-950 border-l border-cyan-500/30 overflow-y-auto">
+            {/* Anime Info */}
+            <div className="p-6 space-y-6">
+              {/* Title */}
               <div>
-                <h4 className="text-white/60 text-sm mb-2">Synopsis</h4>
-                <p className="text-white/80 text-sm leading-relaxed">
-                  {anime.overview}
+                <h2 className="text-2xl font-bold text-cyan-400 mb-2">
+                  {anime.title || anime.name}
+                </h2>
+                <div className="flex items-center gap-3">
+                  <span className="px-3 py-1 bg-purple-500/30 text-purple-300 rounded-full text-sm font-semibold">
+                    {anime.vote_average.toFixed(1)} ⭐
+                  </span>
+                  {anime.status && (
+                    <span className="px-3 py-1 bg-cyan-500/20 text-cyan-300 rounded-full text-sm">
+                      {anime.status}
+                    </span>
+                  )}
+                </div>
+              </div>
+
+              {/* Overview */}
+              <div>
+                <h3 className="text-sm font-semibold text-white/80 mb-2 uppercase tracking-wider">
+                  Synopsis
+                </h3>
+                <p className="text-white/70 text-sm leading-relaxed">
+                  {anime.overview || "No description available"}
                 </p>
               </div>
-            )}
 
-            {anime.genres && anime.genres.length > 0 && (
-              <div>
-                <h4 className="text-white/60 text-sm mb-2">Genres</h4>
-                <div className="flex flex-wrap gap-2">
-                  {anime.genres.map((genre) => (
-                    <span
-                      key={genre.id}
-                      className="px-2 py-1 bg-purple-500/30 text-purple-300 rounded text-xs"
-                    >
-                      {genre.name}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {anime.cast && anime.cast.length > 0 && (
-              <div>
-                <h4 className="text-white/60 text-sm mb-2">Cast</h4>
-                <div className="space-y-2">
-                  {anime.cast.slice(0, 5).map((actor) => (
-                    <div key={actor.id}>
-                      <p className="text-white text-sm font-semibold">
-                        {actor.name}
+              {/* Episodes & Seasons */}
+              {(anime.number_of_episodes || anime.number_of_seasons) && (
+                <div className="grid grid-cols-2 gap-4">
+                  {anime.number_of_episodes && (
+                    <div className="bg-slate-800/50 border border-cyan-500/20 rounded-lg p-3">
+                      <p className="text-cyan-400 text-xs font-semibold uppercase">Episodes</p>
+                      <p className="text-white text-lg font-bold">
+                        {anime.number_of_episodes}
                       </p>
-                      <p className="text-white/60 text-xs">{actor.character}</p>
                     </div>
-                  ))}
+                  )}
+                  {anime.number_of_seasons && (
+                    <div className="bg-slate-800/50 border border-cyan-500/20 rounded-lg p-3">
+                      <p className="text-cyan-400 text-xs font-semibold uppercase">Seasons</p>
+                      <p className="text-white text-lg font-bold">
+                        {anime.number_of_seasons}
+                      </p>
+                    </div>
+                  )}
                 </div>
+              )}
+
+              {/* Genres */}
+              {anime.genres && anime.genres.length > 0 && (
+                <div>
+                  <h3 className="text-sm font-semibold text-white/80 mb-2 uppercase tracking-wider">
+                    Genres
+                  </h3>
+                  <div className="flex flex-wrap gap-2">
+                    {anime.genres.map((genre) => (
+                      <span
+                        key={genre.id}
+                        className="px-3 py-1 bg-purple-500/20 text-purple-300 rounded-full text-xs font-medium"
+                      >
+                        {genre.name}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Release Date */}
+              {(anime.release_date || anime.first_air_date) && (
+                <div>
+                  <h3 className="text-sm font-semibold text-white/80 mb-2 uppercase tracking-wider">
+                    Release Date
+                  </h3>
+                  <p className="text-white/70">
+                    {anime.release_date || anime.first_air_date}
+                  </p>
+                </div>
+              )}
+
+              {/* Created By */}
+              {anime.created_by && anime.created_by.length > 0 && (
+                <div>
+                  <h3 className="text-sm font-semibold text-white/80 mb-2 uppercase tracking-wider">
+                    Created By
+                  </h3>
+                  <p className="text-white/70">
+                    {anime.created_by.map((creator) => creator.name).join(", ")}
+                  </p>
+                </div>
+              )}
+
+              {/* Cast */}
+              {anime.cast && anime.cast.length > 0 && (
+                <div>
+                  <h3 className="text-sm font-semibold text-white/80 mb-3 uppercase tracking-wider">
+                    Cast
+                  </h3>
+                  <div className="space-y-2">
+                    {anime.cast.slice(0, 5).map((actor) => (
+                      <div key={actor.id} className="text-sm">
+                        <p className="text-white font-medium">{actor.name}</p>
+                        <p className="text-white/50 text-xs">{actor.character}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Controls Hint */}
+              <div className="pt-4 border-t border-white/10">
+                <p className="text-white/50 text-xs">
+                  💡 <strong>Tip:</strong> Press SPACE to pause/play, ESC to close
+                </p>
               </div>
-            )}
+            </div>
           </div>
-        </div>
+        )}
       </div>
+
+      {/* Pause Hint - Show when sidebar is hidden */}
+      {!showSidebar && (
+        <div className="absolute bottom-4 left-4 text-white/50 text-sm">
+          Move mouse or press SPACE to show info
+        </div>
+      )}
     </div>
   );
 }
