@@ -18,7 +18,23 @@ export default function VideoPlayerModal({
 
   if (!isOpen || !anime) return null;
 
-  const streamingUrl = getStreamingUrl(anime.id);
+  const streamingUrl = getStreamingUrl(anime.imdb_id);
+
+  if (!streamingUrl) {
+    return (
+      <div className="fixed inset-0 z-50 flex items-center justify-center bg-black">
+        <div className="text-center">
+          <p className="text-white text-xl mb-4">Streaming URL not available</p>
+          <button
+            onClick={onClose}
+            className="px-6 py-2 bg-purple-500 text-white rounded-lg"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+    );
+  }
 
   const handleFullscreen = () => {
     const playerElement = document.getElementById("anime-player");

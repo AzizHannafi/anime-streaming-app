@@ -41,8 +41,8 @@ export default function Home() {
           getTrendingAnime(1),
           getPopularAnime(1),
           getTopRatedAnime(1),
-          getAnimeByGenre(28, 1), // Action
-          getAnimeByGenre(10749, 1), // Romance
+          getAnimeByGenre(16, 2), // Animation - page 2
+          getAnimeByGenre(16, 3), // Animation - page 3
         ]);
 
         setTrendingAnime(trending.results);
@@ -50,6 +50,14 @@ export default function Home() {
         setTopRatedAnime(topRated.results);
         setActionAnime(action.results);
         setRomanceAnime(romance.results);
+        
+        // Log sample IMDb IDs for debugging
+        if (trending.results.length > 0) {
+          console.log("Loaded anime:", trending.results.length, "items");
+          console.log("Sample anime:", trending.results[0]);
+        } else {
+          console.warn("No anime loaded");
+        }
       } catch (error) {
         console.error("Error loading initial data:", error);
         toast.error("Failed to load anime data");
