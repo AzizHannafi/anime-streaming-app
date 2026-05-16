@@ -1,0 +1,35 @@
+{
+  "build_command": "pnpm run build",
+  "capabilities": [],
+  "dev_command": "pnpm run dev",
+  "env_vars": {},
+  "experiments": null,
+  "git_remote": {
+    "repo_url": "s3://vida-prod-gitrepo/webdev-git/310519663052420117/WPMic9wztkxzQqsVQcMx4f",
+    "access_key_id": "ASIAZV3A2ECZDHW7LU5H",
+    "secret_access_key": "VJGvH6kszxKLdLv5QTI6dvMGdlx5pL5BhaVh8V1Q",
+    "session_token": "IQoJb3JpZ2luX2VjEM3//////////wEaCXVzLWVhc3QtMSJGMEQCICH7PscyNoteiFtEygh/DvVgqsZcUfPV9f/1blG4fcJHAiAvMlTkriz5f0mvYErpHfwHxbhMmJP/DYMyKXUhz45Oeyr/AwiW//////////8BEAQaDDY2NTM4NjA5ODg2NiIM3IAAkugpu5oWLia/KtMDw1TPHiQ8LCJdklDT/xJ7p8UcQMCBJykYOk4N5Lam9sieq8v0UyL3aBXk0Z96/SawWkU0mMDlGjvNOKGnbvrSpBjJA00/NdesYugTJ09+lsYz9f4kZbsy7mPtiVCk1bxhickLVMDLJvx7X2PO2Z25s/bo4kz2dZW+brPh7UP13HDShfwbfAQVM9hyaPb447q0wqchFtBXvYbzq601Z3jfXTWd0CP5LpSrlnHsTFyvaXrpk+cKhvXgFlwnu14bCKyKywCdVfjkcUgw3l27aqdCmougDpZtnVU4leFxGgA6Pn7y3kgmpleGASaOlNd3HfQTdEgPTzPhoXprznzk6BSx6J5z0SMcw5DwIr34erW0QkpQhEpNrJ9EKKiR1evR2FuN9jRPz4f7B9CVw1fJ2xqQyhoqqmFzv+sGqvoEJ1hXSwivX7hmYODaAHWRVDVoFOTKe6Llq5llfk5hl+Xsi+mU3AL1zQZAiJs0ePyxOYYrDaP+a1/IHijW8MBFp9n888MkNuPvKx3XkuwOd2aGcBv+2bmrtDetQ4am4OybeOLXPtI1qp53YzKlQ0ZZjnTp0IBYrl7Htvp8A9yKk022L2KGo9NAo5vxSxXS/Lo4uSfvpISe7JkwxLWj0AY6ngF1LbH25DrUCHCnOyVmm2VhlTYqI7r4uuHIRECMiSyFfb2aybqhrwBvkCyfjFI3frvtHswg3Arjp6A+mtjMNQVI61SMNhuIO+P3k1usfs8hieQJoyY5ZeyjaR5KsQMFFeN/bBpJ0DnJ0rN3UDwio+uo1ZPmvKf+6niqRib8COnUSpAmtvlllSY7bnzOff5Khl+iDcDyeXhr6pJKABwDfA==",
+    "expiration": "2026-05-17T08:59:48.000Z"
+  },
+  "name": "anime-streaming-app",
+  "path": "/home/ubuntu/anime-streaming-app",
+  "port": 3000,
+  "secrets": {
+    "BUILT_IN_FORGE_API_KEY": "RZSRvfZY3u3PhFEJ4KpmwD",
+    "BUILT_IN_FORGE_API_URL": "https://forge.manus.ai",
+    "JWT_SECRET": "2Kytkab64Q8Bq6BjHMyNHR",
+    "OAUTH_SERVER_URL": "https://api.manus.im",
+    "OWNER_NAME": "hannafi aziz",
+    "OWNER_OPEN_ID": "kTeHvKmZq2Pkju3c5nHyHg",
+    "VITE_ANALYTICS_ENDPOINT": "https://manus-analytics.com",
+    "VITE_ANALYTICS_WEBSITE_ID": "e224548c-6996-4044-b3f3-f3244cf777bc",
+    "VITE_APP_ID": "WPMic9wztkxzQqsVQcMx4f",
+    "VITE_APP_LOGO": "",
+    "VITE_APP_TITLE": "Premium Anime Streaming Platform",
+    "VITE_FRONTEND_FORGE_API_KEY": "HQAzrxbKCruKRDUTCdceGp",
+    "VITE_FRONTEND_FORGE_API_URL": "https://forge.manus.ai",
+    "VITE_OAUTH_PORTAL_URL": "https://manus.im"
+  },
+  "template_id": "web-static",
+  "test_command": "pnpm test"
+}
