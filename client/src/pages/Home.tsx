@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "wouter";
-import { Play, Heart, History } from "lucide-react";
+import { Play, Heart, History, Search } from "lucide-react";
 import { toast } from "sonner";
 import { getTrendingAnime, getPopularAnime, getTopRatedAnime, AnimeItem, getPosterUrl } from "@/lib/tmdb";
 import { useFavorites } from "@/hooks/useLocalStorage";
 import AnimeCarousel from "@/components/AnimeCarousel";
+import SearchBar from "@/components/SearchBar";
 import AgeVerificationModal from "@/components/AgeVerificationModal";
 
 export default function Home() {
@@ -14,6 +15,7 @@ export default function Home() {
   const [topRatedAnime, setTopRatedAnime] = useState<AnimeItem[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [scrolled, setScrolled] = useState(false);
+  const [showSearch, setShowSearch] = useState(false);
   const { favorites } = useFavorites();
 
   useEffect(() => {
@@ -52,6 +54,10 @@ export default function Home() {
     navigate(`/anime/${anime.id}`);
   };
 
+  const handleSearch = (query: string) => {
+    navigate(`/search?q=${encodeURIComponent(query)}`);
+  };
+
   const featuredAnime = trendingAnime[0];
 
   return (
@@ -71,6 +77,11 @@ export default function Home() {
               AV
             </div>
             <span className="text-2xl font-bold gradient-text">AnimeVerse</span>
+          </div>
+
+          {/* Search Bar */}
+          <div className="flex-1 max-w-md mx-4">
+            <SearchBar onSearch={handleSearch} onSelectAnime={handleSelectAnime} />
           </div>
 
           {/* Right Actions */}

@@ -8,6 +8,7 @@ import { AgeVerificationProvider } from "./contexts/AgeVerificationContext";
 import Home from "./pages/Home";
 import AnimeDetail from "./pages/AnimeDetail";
 import Favorites from "./pages/Favorites";
+import Search from "./pages/Search";
 
 
 function Router() {
@@ -16,6 +17,7 @@ function Router() {
       <Route path={"/"} component={Home} />
       <Route path={"/anime/:id"} component={AnimeDetail} />
       <Route path={"/favorites"} component={Favorites} />
+      <Route path={"/search"} component={Search} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />
