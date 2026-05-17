@@ -222,7 +222,7 @@
   }
 
   .netflix-carousel-item {
-    @apply group/item relative w-full;
+    @apply relative w-full;
     aspect-ratio: 2 / 3;
   }
 
@@ -240,11 +240,19 @@
   }
 
   .netflix-poster-overlay {
-    @apply absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover/item:opacity-100 transition-opacity duration-300;
+    @apply absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 transition-opacity duration-300;
+  }
+
+  .netflix-carousel-item:hover .netflix-poster-overlay {
+    @apply opacity-100;
   }
 
   .netflix-poster-info {
-    @apply absolute bottom-0 left-0 right-0 p-3 space-y-2 opacity-0 group-hover/item:opacity-100 transition-opacity duration-300;
+    @apply absolute bottom-0 left-0 right-0 p-3 space-y-2 opacity-0 transition-opacity duration-300;
+  }
+
+  .netflix-carousel-item:hover .netflix-poster-info {
+    @apply opacity-100;
   }
 
   .netflix-poster-title {
@@ -256,7 +264,11 @@
   }
 
   .netflix-play-button {
-    @apply absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover/item:opacity-100 transition-opacity duration-300;
+    @apply absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 transition-opacity duration-300;
+  }
+
+  .netflix-carousel-item:hover .netflix-play-button {
+    @apply opacity-100;
   }
 
   .netflix-play-icon {
@@ -273,12 +285,12 @@
   }
 
   .netflix-grid-item {
-    @apply relative cursor-pointer group/grid;
+    @apply relative cursor-pointer;
   }
 
   /* Netflix-inspired detail page */
   .netflix-detail-hero {
-    @apply relative h-96 md:h-screen/2 overflow-hidden;
+    @apply relative h-96 md:h-96 overflow-hidden;
   }
 
   .netflix-detail-backdrop {
