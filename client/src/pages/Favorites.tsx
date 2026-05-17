@@ -15,7 +15,7 @@ interface FavoriteAnime {
 
 export default function Favorites() {
   const [, navigate] = useLocation();
-  const { favorites, removeFavorite } = useFavorites();
+  const { favorites, removeFromFavorites } = useFavorites();
   const [favoriteDetails, setFavoriteDetails] = useState<FavoriteAnime[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [playingAnime, setPlayingAnime] = useState<any>(null);
@@ -54,7 +54,7 @@ export default function Favorites() {
   }, [favorites]);
 
   const handleRemoveFavorite = (id: number) => {
-    removeFavorite(id);
+    removeFromFavorites(id);
     toast.success("Removed from favorites");
   };
 
