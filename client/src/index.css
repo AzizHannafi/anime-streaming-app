@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
 
 @custom-variant dark (&:is(.dark *));
 
@@ -43,74 +44,74 @@
 }
 
 :root {
-  --primary: #FF6600;
-  --primary-foreground: #ffffff;
-  --sidebar-primary: #FF6600;
-  --sidebar-primary-foreground: #ffffff;
-  --chart-1: #FF6600;
-  --chart-2: #FF8533;
-  --chart-3: #FF6600;
-  --chart-4: #FF8533;
-  --chart-5: #FF6600;
-  --radius: 0.5rem;
+  --primary: var(--color-orange-600);
+  --primary-foreground: var(--color-orange-50);
+  --sidebar-primary: var(--color-orange-600);
+  --sidebar-primary-foreground: var(--color-orange-50);
+  --chart-1: var(--color-orange-300);
+  --chart-2: var(--color-orange-500);
+  --chart-3: var(--color-orange-600);
+  --chart-4: var(--color-orange-700);
+  --chart-5: var(--color-orange-800);
+  --radius: 0.65rem;
   --background: #0f0f0f;
   --foreground: #ffffff;
-  --card: #1a1a1a;
+  --card: #141414;
   --card-foreground: #ffffff;
   --popover: #1a1a1a;
   --popover-foreground: #ffffff;
-  --secondary: #FF8533;
+  --secondary: #1a1a1a;
   --secondary-foreground: #ffffff;
-  --muted: #333333;
+  --muted: #666666;
   --muted-foreground: #999999;
-  --accent: #FF6600;
+  --accent: #FF6B35;
   --accent-foreground: #ffffff;
-  --destructive: #ff1744;
+  --destructive: #E50914;
   --destructive-foreground: #ffffff;
-  --border: #2a2a2a;
+  --border: #333333;
   --input: #1a1a1a;
-  --ring: #FF6600;
+  --ring: #FF6B35;
   --sidebar: #0f0f0f;
   --sidebar-foreground: #ffffff;
-  --sidebar-accent: #FF6600;
+  --sidebar-accent: #FF6B35;
   --sidebar-accent-foreground: #ffffff;
-  --sidebar-border: #2a2a2a;
-  --sidebar-ring: #FF6600;
+  --sidebar-border: #333333;
+  --sidebar-ring: #FF6B35;
 }
 
 .dark {
-  --primary: #FF6600;
-  --primary-foreground: #ffffff;
-  --sidebar-primary: #FF6600;
-  --sidebar-primary-foreground: #ffffff;
+  --primary: var(--color-orange-600);
+  --primary-foreground: var(--color-orange-50);
+  --sidebar-primary: var(--color-orange-600);
+  --sidebar-primary-foreground: var(--color-orange-50);
   --background: #0f0f0f;
   --foreground: #ffffff;
-  --card: #1a1a1a;
+  --card: #141414;
   --card-foreground: #ffffff;
   --popover: #1a1a1a;
   --popover-foreground: #ffffff;
-  --secondary: #FF8533;
+  --secondary: #1a1a1a;
   --secondary-foreground: #ffffff;
-  --muted: #333333;
+  --muted: #666666;
   --muted-foreground: #999999;
-  --accent: #FF6600;
+  --accent: #FF6B35;
   --accent-foreground: #ffffff;
-  --destructive: #ff1744;
+  --destructive: #E50914;
   --destructive-foreground: #ffffff;
-  --border: #2a2a2a;
+  --border: #333333;
   --input: #1a1a1a;
-  --ring: #FF6600;
-  --chart-1: #FF6600;
-  --chart-2: #FF8533;
-  --chart-3: #FF6600;
-  --chart-4: #FF8533;
-  --chart-5: #FF6600;
+  --ring: #FF6B35;
+  --chart-1: var(--color-orange-300);
+  --chart-2: var(--color-orange-500);
+  --chart-3: var(--color-orange-600);
+  --chart-4: var(--color-orange-700);
+  --chart-5: var(--color-orange-800);
   --sidebar: #0f0f0f;
   --sidebar-foreground: #ffffff;
-  --sidebar-accent: #FF6600;
+  --sidebar-accent: #FF6B35;
   --sidebar-accent-foreground: #ffffff;
-  --sidebar-border: #2a2a2a;
-  --sidebar-ring: #FF6600;
+  --sidebar-border: #333333;
+  --sidebar-ring: #FF6B35;
 }
 
 @layer base {
@@ -147,40 +148,185 @@
     min-width: 0;
   }
 
-  .glassmorphism {
-    @apply backdrop-blur-md bg-white/10 border border-white/20 rounded-lg;
+  /* Netflix-inspired hero section */
+  .netflix-hero {
+    @apply relative min-h-screen pt-20 pb-12 overflow-hidden;
+    background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 50%, #0f0f0f 100%);
+  }
+
+  .netflix-hero-backdrop {
+    @apply absolute inset-0 -z-10;
+    background: radial-gradient(circle at 68% 30%, rgba(255, 107, 53, 0.25), transparent 24%),
+                linear-gradient(90deg, rgba(0, 0, 0, 0.93) 0%, rgba(0, 0, 0, 0.56) 38%, rgba(0, 0, 0, 0.16) 70%),
+                linear-gradient(180deg, #23140f, #141414 60%, #080808);
+  }
+
+  .netflix-hero-content {
+    @apply relative z-10 max-w-2xl space-y-6;
+  }
+
+  .netflix-hero-title {
+    @apply text-6xl font-bold tracking-tight;
+  }
+
+  .netflix-hero-description {
+    @apply text-lg text-gray-300 leading-relaxed;
+  }
+
+  .netflix-hero-actions {
+    @apply flex items-center gap-4 pt-4;
+  }
+
+  .netflix-cta {
+    @apply inline-flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-orange-600 to-orange-500 text-white font-bold rounded-lg hover:from-orange-700 hover:to-orange-600 transition-all duration-200 shadow-lg shadow-orange-500/50;
+  }
+
+  .netflix-cta-secondary {
+    @apply inline-flex items-center gap-2 px-8 py-3 bg-white/20 text-white font-bold rounded-lg hover:bg-white/30 transition-all duration-200 backdrop-blur-sm;
+  }
+
+  /* Netflix-inspired carousel */
+  .netflix-rail {
+    @apply space-y-4 py-8;
+  }
+
+  .netflix-rail-heading {
+    @apply px-4 sm:px-8 space-y-1;
+  }
+
+  .netflix-rail-heading h2 {
+    @apply text-2xl font-bold;
+  }
+
+  .netflix-rail-heading p {
+    @apply text-sm text-gray-500;
+  }
+
+  .netflix-carousel {
+    @apply relative group;
+  }
+
+  .netflix-carousel-container {
+    @apply flex gap-4 overflow-x-auto scrollbar-hide px-4 sm:px-8 pb-4;
+    scroll-behavior: smooth;
+  }
+
+  .netflix-carousel-item {
+    @apply flex-shrink-0 w-40 h-56 cursor-pointer group/item relative;
+  }
+
+  .netflix-poster {
+    @apply w-full h-full rounded-lg overflow-hidden relative;
+    transition: transform 0.3s ease;
+  }
+
+  .netflix-carousel-item:hover .netflix-poster {
+    @apply transform scale-105 shadow-2xl;
+  }
+
+  .netflix-poster-image {
+    @apply w-full h-full object-cover;
+  }
+
+  .netflix-poster-overlay {
+    @apply absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover/item:opacity-100 transition-opacity duration-300;
+  }
+
+  .netflix-poster-info {
+    @apply absolute bottom-0 left-0 right-0 p-4 space-y-2 opacity-0 group-hover/item:opacity-100 transition-opacity duration-300;
+  }
+
+  .netflix-poster-title {
+    @apply font-bold text-sm line-clamp-2;
+  }
+
+  .netflix-poster-rating {
+    @apply text-xs text-gray-300 flex items-center gap-1;
+  }
+
+  .netflix-play-button {
+    @apply absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover/item:opacity-100 transition-opacity duration-300;
+  }
+
+  .netflix-play-icon {
+    @apply w-12 h-12 bg-orange-600 rounded-full flex items-center justify-center text-white shadow-lg;
+  }
+
+  .netflix-carousel-arrow {
+    @apply absolute top-1/2 -translate-y-1/2 z-10 p-2 bg-black/50 hover:bg-orange-600/50 text-white rounded-full transition-all duration-200 opacity-0 group-hover:opacity-100;
+  }
+
+  .netflix-carousel-arrow.left {
+    @apply left-2 sm:left-4;
+  }
+
+  .netflix-carousel-arrow.right {
+    @apply right-2 sm:right-4;
+  }
+
+  /* Netflix-inspired grid */
+  .netflix-grid {
+    @apply grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 px-4 sm:px-8 py-8;
+  }
+
+  .netflix-grid-item {
+    @apply relative cursor-pointer group/grid;
+  }
+
+  /* Netflix-inspired detail page */
+  .netflix-detail-hero {
+    @apply relative h-96 sm:h-screen/2 overflow-hidden;
+  }
+
+  .netflix-detail-backdrop {
+    @apply absolute inset-0 -z-10;
+  }
+
+  .netflix-detail-backdrop-image {
+    @apply w-full h-full object-cover;
+  }
+
+  .netflix-detail-overlay {
+    @apply absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent;
+  }
+
+  .netflix-detail-content {
+    @apply relative z-10 h-full flex flex-col justify-end p-4 sm:p-8;
+  }
+
+  .netflix-detail-info {
+    @apply max-w-2xl space-y-4;
+  }
+
+  .netflix-detail-title {
+    @apply text-4xl sm:text-6xl font-bold;
+  }
+
+  .netflix-detail-meta {
+    @apply flex items-center gap-4 text-sm text-gray-300;
+  }
+
+  .netflix-detail-description {
+    @apply text-base text-gray-200 line-clamp-3;
+  }
+
+  /* Crunchyroll button style */
+  .crunchyroll-button {
+    @apply px-6 py-3 bg-gradient-to-r from-orange-600 to-orange-500 text-white font-semibold rounded-lg hover:shadow-lg hover:shadow-orange-500/50 transition-all duration-200 transform hover:scale-105 inline-flex items-center gap-2;
+  }
+
+  /* Neon border effect */
+  .neon-border {
+    @apply border border-orange-500/30 rounded-lg;
   }
 
   .neon-glow {
-    @apply shadow-lg shadow-orange-500/50;
+    @apply shadow-lg shadow-orange-500/20;
   }
 
-  .neon-glow-purple {
-    @apply shadow-lg shadow-orange-600/50;
-  }
-
-  .neon-border {
-    @apply border border-orange-500/50;
-  }
-
-  .neon-border-purple {
-    @apply border border-orange-600/50;
-  }
-
+  /* Gradient text */
   .gradient-text {
-    @apply bg-gradient-to-r from-orange-500 to-orange-400 bg-clip-text text-transparent;
-  }
-
-  .crunchyroll-button {
-    @apply bg-gradient-to-r from-orange-600 to-orange-500 hover:from-orange-700 hover:to-orange-600 text-white font-bold py-3 px-6 rounded-lg transition-all duration-200 shadow-lg hover:shadow-orange-500/50;
-  }
-
-  .crunchyroll-card {
-    @apply bg-gradient-to-br from-slate-900 to-slate-950 border border-orange-500/20 rounded-lg overflow-hidden hover:border-orange-500/50 transition-all duration-300;
-  }
-
-  .crunchyroll-hero {
-    @apply relative overflow-hidden rounded-lg shadow-2xl;
+    @apply bg-gradient-to-r from-orange-400 to-orange-600 bg-clip-text text-transparent;
   }
 
   @media (min-width: 640px) {
@@ -199,38 +345,12 @@
   }
 }
 
-@layer utilities {
-  .animate-glow {
-    animation: glow 2s ease-in-out infinite;
-  }
+/* Scrollbar hiding */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
 
-  @keyframes glow {
-    0%, 100% {
-      box-shadow: 0 0 20px rgba(0, 240, 255, 0.5);
-    }
-    50% {
-      box-shadow: 0 0 30px rgba(0, 240, 255, 0.8);
-    }
-  }
-
-  .animate-glow-purple {
-    animation: glow-purple 2s ease-in-out infinite;
-  }
-
-  @keyframes glow-purple {
-    0%, 100% {
-      box-shadow: 0 0 20px rgba(217, 70, 239, 0.5);
-    }
-    50% {
-      box-shadow: 0 0 30px rgba(217, 70, 239, 0.8);
-    }
-  }
-
-  .clip-diagonal {
-    clip-path: polygon(0 8%, 100% 0, 100% 100%, 0 92%);
-  }
-
-  .clip-diagonal-reverse {
-    clip-path: polygon(0 0, 100% 8%, 100% 92%, 0 100%);
-  }
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
 }
