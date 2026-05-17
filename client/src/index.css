@@ -150,27 +150,33 @@
 
   /* Netflix-inspired hero section */
   .netflix-hero {
-    @apply relative min-h-screen pt-20 pb-12 overflow-hidden;
+    @apply relative w-full pt-20 pb-8 overflow-hidden;
+    height: 60vh;
     background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 50%, #0f0f0f 100%);
   }
 
   .netflix-hero-backdrop {
     @apply absolute inset-0 -z-10;
-    background: radial-gradient(circle at 68% 30%, rgba(255, 107, 53, 0.25), transparent 24%),
-                linear-gradient(90deg, rgba(0, 0, 0, 0.93) 0%, rgba(0, 0, 0, 0.56) 38%, rgba(0, 0, 0, 0.16) 70%),
-                linear-gradient(180deg, #23140f, #141414 60%, #080808);
+  }
+
+  .netflix-hero-backdrop-image {
+    @apply w-full h-full object-cover;
+  }
+
+  .netflix-hero-overlay {
+    @apply absolute inset-0 bg-gradient-to-r from-black via-black/50 to-transparent;
   }
 
   .netflix-hero-content {
-    @apply relative z-10 max-w-2xl space-y-6;
+    @apply relative z-10 max-w-2xl space-y-6 h-full flex flex-col justify-end pb-12;
   }
 
   .netflix-hero-title {
-    @apply text-6xl font-bold tracking-tight;
+    @apply text-5xl md:text-6xl font-bold tracking-tight;
   }
 
   .netflix-hero-description {
-    @apply text-lg text-gray-300 leading-relaxed;
+    @apply text-base md:text-lg text-gray-300 leading-relaxed max-w-xl line-clamp-3;
   }
 
   .netflix-hero-actions {
@@ -185,34 +191,51 @@
     @apply inline-flex items-center gap-2 px-8 py-3 bg-white/20 text-white font-bold rounded-lg hover:bg-white/30 transition-all duration-200 backdrop-blur-sm;
   }
 
-  /* Netflix-inspired carousel */
+  /* Netflix-inspired rail/section */
   .netflix-rail {
-    @apply space-y-4 py-8;
+    @apply w-full py-8 px-4 md:px-8;
   }
 
   .netflix-rail-heading {
-    @apply px-4 sm:px-8 space-y-1;
+    @apply mb-6 space-y-1;
   }
 
   .netflix-rail-heading h2 {
-    @apply text-2xl font-bold;
+    @apply text-2xl md:text-3xl font-bold;
   }
 
   .netflix-rail-heading p {
     @apply text-sm text-gray-500;
   }
 
+  /* Netflix carousel */
   .netflix-carousel {
-    @apply relative group;
+    @apply relative group w-full;
   }
 
   .netflix-carousel-container {
-    @apply flex gap-4 overflow-x-auto scrollbar-hide px-4 sm:px-8 pb-4;
+    @apply flex gap-2 md:gap-4 overflow-x-auto scrollbar-hide pb-2;
     scroll-behavior: smooth;
   }
 
   .netflix-carousel-item {
-    @apply flex-shrink-0 w-40 h-56 cursor-pointer group/item relative;
+    @apply flex-shrink-0 group/item relative;
+    width: 150px;
+    height: 225px;
+  }
+
+  @media (min-width: 768px) {
+    .netflix-carousel-item {
+      width: 180px;
+      height: 270px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .netflix-carousel-item {
+      width: 200px;
+      height: 300px;
+    }
   }
 
   .netflix-poster {
@@ -233,11 +256,11 @@
   }
 
   .netflix-poster-info {
-    @apply absolute bottom-0 left-0 right-0 p-4 space-y-2 opacity-0 group-hover/item:opacity-100 transition-opacity duration-300;
+    @apply absolute bottom-0 left-0 right-0 p-3 space-y-2 opacity-0 group-hover/item:opacity-100 transition-opacity duration-300;
   }
 
   .netflix-poster-title {
-    @apply font-bold text-sm line-clamp-2;
+    @apply font-bold text-xs md:text-sm line-clamp-2;
   }
 
   .netflix-poster-rating {
@@ -257,16 +280,16 @@
   }
 
   .netflix-carousel-arrow.left {
-    @apply left-2 sm:left-4;
+    @apply left-2 md:left-4;
   }
 
   .netflix-carousel-arrow.right {
-    @apply right-2 sm:right-4;
+    @apply right-2 md:right-4;
   }
 
   /* Netflix-inspired grid */
   .netflix-grid {
-    @apply grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 px-4 sm:px-8 py-8;
+    @apply grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 md:gap-4 px-4 md:px-8 py-8;
   }
 
   .netflix-grid-item {
@@ -275,7 +298,7 @@
 
   /* Netflix-inspired detail page */
   .netflix-detail-hero {
-    @apply relative h-96 sm:h-screen/2 overflow-hidden;
+    @apply relative h-96 md:h-screen/2 overflow-hidden;
   }
 
   .netflix-detail-backdrop {
@@ -291,7 +314,7 @@
   }
 
   .netflix-detail-content {
-    @apply relative z-10 h-full flex flex-col justify-end p-4 sm:p-8;
+    @apply relative z-10 h-full flex flex-col justify-end p-4 md:p-8;
   }
 
   .netflix-detail-info {
@@ -299,7 +322,7 @@
   }
 
   .netflix-detail-title {
-    @apply text-4xl sm:text-6xl font-bold;
+    @apply text-4xl md:text-6xl font-bold;
   }
 
   .netflix-detail-meta {

@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "wouter";
-import { Play, ChevronRight, ChevronLeft, Search, Heart, History } from "lucide-react";
+import { Play, Heart, History } from "lucide-react";
 import { toast } from "sonner";
-import { getTrendingAnime, getPopularAnime, getTopRatedAnime, AnimeItem } from "@/lib/tmdb";
+import { getTrendingAnime, getPopularAnime, getTopRatedAnime, AnimeItem, getPosterUrl } from "@/lib/tmdb";
 import { useFavorites } from "@/hooks/useLocalStorage";
 import AnimeCarousel from "@/components/AnimeCarousel";
 import AgeVerificationModal from "@/components/AgeVerificationModal";
-import SearchBar from "@/components/SearchBar";
 
 export default function Home() {
   const [, navigate] = useLocation();
@@ -15,7 +14,6 @@ export default function Home() {
   const [topRatedAnime, setTopRatedAnime] = useState<AnimeItem[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [scrolled, setScrolled] = useState(false);
-  const [query, setQuery] = useState("");
   const { favorites } = useFavorites();
 
   useEffect(() => {
@@ -75,11 +73,6 @@ export default function Home() {
             <span className="text-2xl font-bold gradient-text">AnimeVerse</span>
           </div>
 
-          {/* Search */}
-          <div className="hidden md:block flex-1 max-w-sm mx-8">
-            {/* Search would go here */}
-          </div>
-
           {/* Right Actions */}
           <div className="flex items-center gap-4">
             <button
@@ -103,8 +96,19 @@ export default function Home() {
       {/* Hero Section */}
       {featuredAnime && (
         <section className="netflix-hero">
-          <div className="netflix-hero-backdrop" />
-          <div className="container netflix-hero-content pt-32">
+          {featuredAnime.backdrop_path && (
+            <>
+              <div className="netflix-hero-backdrop">
+                <img
+                  src={`https://image.tmdb.org/t/p/original${featuredAnime.backdrop_path}`}
+                  alt={featuredAnime.title || featuredAnime.name}
+                  className="netflix-hero-backdrop-image"
+                />
+              </div>
+              <div className="netflix-hero-overlay" />
+            </>
+          )}
+          <div className="container netflix-hero-content">
             <h1 className="netflix-hero-title">
               {featuredAnime.title || featuredAnime.name}
             </h1>
@@ -119,7 +123,10 @@ export default function Home() {
                 <Play size={20} fill="currentColor" />
                 Watch Now
               </button>
-              <button className="netflix-cta-secondary">
+              <button 
+                className="netflix-cta-secondary"
+                onClick={() => handleSelectAnime(featuredAnime)}
+              >
                 More Info
               </button>
             </div>
@@ -154,7 +161,7 @@ export default function Home() {
         />
 
         {/* Footer Padding */}
-        <div className="h-32" />
+        <div className="h-20" />
       </main>
 
       {/* Age Verification Modal */}
