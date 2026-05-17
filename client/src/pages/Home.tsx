@@ -107,11 +107,11 @@ export default function Home() {
       {/* Hero Section */}
       {featuredAnime && (
         <section className="netflix-hero">
-          {featuredAnime.backdrop_path && (
+          {featuredAnime.poster_path && (
             <>
               <div className="netflix-hero-backdrop">
                 <img
-                  src={`https://image.tmdb.org/t/p/original${featuredAnime.backdrop_path}`}
+                  src={getPosterUrl(featuredAnime.poster_path)}
                   alt={featuredAnime.title || featuredAnime.name}
                   className="netflix-hero-backdrop-image"
                 />
