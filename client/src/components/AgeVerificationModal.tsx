@@ -37,11 +37,11 @@ export default function AgeVerificationModal() {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 backdrop-blur-sm">
-      <div className="w-full max-w-md mx-auto p-8 bg-gradient-to-b from-slate-900 to-slate-950 border border-red-500/50 rounded-2xl shadow-2xl">
+      <div className="w-full max-w-md mx-auto p-8 bg-gradient-to-b from-slate-900 to-slate-950 border border-orange-500/50 rounded-2xl shadow-2xl shadow-orange-500/20">
         {/* Warning Icon */}
         <div className="flex justify-center mb-6">
-          <div className="p-4 bg-red-500/20 rounded-full">
-            <AlertCircle size={48} className="text-red-500" />
+          <div className="p-4 bg-orange-600/20 rounded-full">
+            <AlertCircle size={48} className="text-orange-500" />
           </div>
         </div>
 
@@ -54,8 +54,8 @@ export default function AgeVerificationModal() {
         </p>
 
         {/* Warning Message */}
-        <div className="bg-red-500/10 border border-red-500/30 rounded-lg p-4 mb-6">
-          <p className="text-red-400 text-sm">
+        <div className="bg-orange-600/10 border border-orange-500/30 rounded-lg p-4 mb-6">
+          <p className="text-orange-400 text-sm">
             ⚠️ By confirming, you certify that you are at least 18 years old and agree to our terms.
           </p>
         </div>
@@ -71,7 +71,7 @@ export default function AgeVerificationModal() {
               setSelectedYear(e.target.value);
               setError("");
             }}
-            className="w-full px-4 py-3 bg-slate-800 border border-cyan-500/30 rounded-lg text-white focus:outline-none focus:border-cyan-400 focus:ring-2 focus:ring-cyan-500/20 transition-all"
+            className="w-full px-4 py-3 bg-slate-800 border border-orange-500/30 rounded-lg text-white focus:outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-500/20 transition-all"
           >
             <option value="">-- Select Year --</option>
             {years.map((year) => (
@@ -84,8 +84,8 @@ export default function AgeVerificationModal() {
 
         {/* Error Message */}
         {error && (
-          <div className="bg-red-500/10 border border-red-500/50 rounded-lg p-3 mb-6">
-            <p className="text-red-400 text-sm">{error}</p>
+          <div className="bg-orange-600/10 border border-orange-500/50 rounded-lg p-3 mb-6">
+            <p className="text-orange-400 text-sm">{error}</p>
           </div>
         )}
 
@@ -93,13 +93,13 @@ export default function AgeVerificationModal() {
         <div className="flex gap-3">
           <button
             onClick={handleReject}
-            className="flex-1 px-4 py-3 bg-slate-700 hover:bg-slate-600 text-white rounded-lg font-semibold transition-colors duration-200"
+            className="flex-1 px-4 py-3 bg-slate-700 hover:bg-slate-600 text-white rounded-lg font-semibold transition-colors duration-200 border border-slate-600"
           >
             Decline
           </button>
           <button
             onClick={handleVerify}
-            className="flex-1 px-4 py-3 bg-gradient-to-r from-cyan-500 to-purple-600 hover:from-cyan-600 hover:to-purple-700 text-white rounded-lg font-semibold transition-all duration-200 shadow-lg"
+            className="flex-1 px-4 py-3 bg-gradient-to-r from-orange-600 to-orange-500 hover:from-orange-700 hover:to-orange-600 text-white rounded-lg font-semibold transition-all duration-200 shadow-lg shadow-orange-500/50"
           >
             I'm 18+
           </button>

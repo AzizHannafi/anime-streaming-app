@@ -44,9 +44,9 @@ export default function AnimeCarousel({
   return (
     <div className="space-y-4">
       {/* Title */}
-      <div className="flex items-center justify-between px-2">
-        <h2 className="text-2xl font-bold gradient-text">{title}</h2>
-        <div className="text-white/60 text-sm">{anime.length} titles</div>
+      <div className="flex items-center justify-between px-2 pb-3 border-b border-orange-500/20">
+        <h2 className="text-3xl font-bold gradient-text">{title}</h2>
+        <div className="text-white/60 text-sm font-semibold">{anime.length} titles</div>
       </div>
 
       {/* Carousel Container */}
@@ -55,7 +55,7 @@ export default function AnimeCarousel({
         {canScrollLeft && (
           <button
             onClick={() => scroll("left")}
-            className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 p-2 bg-gradient-to-r from-black to-transparent hover:from-purple-500/50 text-white rounded-r-lg transition-all duration-200 opacity-0 group-hover:opacity-100"
+            className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 p-2 bg-gradient-to-r from-black to-transparent hover:from-orange-600/50 text-white rounded-r-lg transition-all duration-200 opacity-0 group-hover:opacity-100"
           >
             <ChevronLeft size={24} />
           </button>
@@ -89,7 +89,7 @@ export default function AnimeCarousel({
         {canScrollRight && (
           <button
             onClick={() => scroll("right")}
-            className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 p-2 bg-gradient-to-l from-black to-transparent hover:from-purple-500/50 text-white rounded-l-lg transition-all duration-200 opacity-0 group-hover:opacity-100"
+            className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 p-2 bg-gradient-to-l from-black to-transparent hover:from-orange-600/50 text-white rounded-l-lg transition-all duration-200 opacity-0 group-hover:opacity-100"
           >
             <ChevronRight size={24} />
           </button>

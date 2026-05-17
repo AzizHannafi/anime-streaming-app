@@ -59,8 +59,8 @@ export default function AnimeCard({ anime, onSelect, onPlayClick }: AnimeCardPro
                 onClick={handleFavoriteClick}
                 className={`p-2 rounded-full transition-all duration-200 ${
                   isFav
-                    ? "bg-purple-500 text-white shadow-lg shadow-purple-500/50"
-                    : "bg-white/20 text-white hover:bg-purple-500/50"
+                    ? "bg-orange-600 text-white shadow-lg shadow-orange-500/50"
+                    : "bg-white/20 text-white hover:bg-orange-600/50"
                 }`}
               >
                 <Heart size={20} fill={isFav ? "currentColor" : "none"} />
@@ -75,7 +75,7 @@ export default function AnimeCard({ anime, onSelect, onPlayClick }: AnimeCardPro
                   {anime.title || anime.name}
                 </h3>
                 <div className="flex items-center gap-2">
-                  <span className="text-cyan-400 text-xs font-semibold">
+                  <span className="text-orange-400 text-xs font-semibold">
                     ★ {anime.vote_average.toFixed(1)}
                   </span>
                   <span className="text-white/60 text-xs">
@@ -87,7 +87,7 @@ export default function AnimeCard({ anime, onSelect, onPlayClick }: AnimeCardPro
               {/* Play Button */}
               <button
                 onClick={handlePlayClick}
-                className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-cyan-500 to-purple-500 text-white py-2 rounded-lg font-semibold text-sm hover:shadow-lg hover:shadow-cyan-500/50 transition-all duration-200 transform hover:scale-105"
+                className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-orange-600 to-orange-500 text-white py-2 rounded-lg font-semibold text-sm hover:shadow-lg hover:shadow-orange-500/50 transition-all duration-200 transform hover:scale-105"
               >
                 <Play size={16} fill="currentColor" />
                 Watch Now
@@ -97,7 +97,7 @@ export default function AnimeCard({ anime, onSelect, onPlayClick }: AnimeCardPro
         )}
 
         {/* Rating Badge */}
-        <div className="absolute top-2 right-2 bg-gradient-to-r from-cyan-500 to-purple-500 text-white px-2 py-1 rounded text-xs font-bold">
+        <div className="absolute top-2 right-2 bg-gradient-to-r from-orange-600 to-orange-500 text-white px-2 py-1 rounded text-xs font-bold shadow-lg shadow-orange-500/50">
           {anime.vote_average.toFixed(1)}
         </div>
       </div>

@@ -43,74 +43,74 @@
 }
 
 :root {
-  --primary: #00f0ff;
-  --primary-foreground: #0a0e27;
-  --sidebar-primary: #00f0ff;
-  --sidebar-primary-foreground: #0a0e27;
-  --chart-1: #00f0ff;
-  --chart-2: #d946ef;
-  --chart-3: #00f0ff;
-  --chart-4: #d946ef;
-  --chart-5: #00f0ff;
-  --radius: 0.65rem;
-  --background: #0a0e27;
-  --foreground: #e0e0ff;
-  --card: #1a1f3a;
-  --card-foreground: #e0e0ff;
-  --popover: #1a1f3a;
-  --popover-foreground: #e0e0ff;
-  --secondary: #d946ef;
-  --secondary-foreground: #e0e0ff;
-  --muted: #2d3456;
-  --muted-foreground: #a0a0c0;
-  --accent: #00f0ff;
-  --accent-foreground: #0a0e27;
+  --primary: #FF6600;
+  --primary-foreground: #ffffff;
+  --sidebar-primary: #FF6600;
+  --sidebar-primary-foreground: #ffffff;
+  --chart-1: #FF6600;
+  --chart-2: #FF8533;
+  --chart-3: #FF6600;
+  --chart-4: #FF8533;
+  --chart-5: #FF6600;
+  --radius: 0.5rem;
+  --background: #0f0f0f;
+  --foreground: #ffffff;
+  --card: #1a1a1a;
+  --card-foreground: #ffffff;
+  --popover: #1a1a1a;
+  --popover-foreground: #ffffff;
+  --secondary: #FF8533;
+  --secondary-foreground: #ffffff;
+  --muted: #333333;
+  --muted-foreground: #999999;
+  --accent: #FF6600;
+  --accent-foreground: #ffffff;
   --destructive: #ff1744;
-  --destructive-foreground: #e0e0ff;
-  --border: #2d3456;
-  --input: #1a1f3a;
-  --ring: #00f0ff;
-  --sidebar: #0a0e27;
-  --sidebar-foreground: #e0e0ff;
-  --sidebar-accent: #00f0ff;
-  --sidebar-accent-foreground: #0a0e27;
-  --sidebar-border: #2d3456;
-  --sidebar-ring: #00f0ff;
+  --destructive-foreground: #ffffff;
+  --border: #2a2a2a;
+  --input: #1a1a1a;
+  --ring: #FF6600;
+  --sidebar: #0f0f0f;
+  --sidebar-foreground: #ffffff;
+  --sidebar-accent: #FF6600;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: #2a2a2a;
+  --sidebar-ring: #FF6600;
 }
 
 .dark {
-  --primary: #00f0ff;
-  --primary-foreground: #0a0e27;
-  --sidebar-primary: #00f0ff;
-  --sidebar-primary-foreground: #0a0e27;
-  --background: #0a0e27;
-  --foreground: #e0e0ff;
-  --card: #1a1f3a;
-  --card-foreground: #e0e0ff;
-  --popover: #1a1f3a;
-  --popover-foreground: #e0e0ff;
-  --secondary: #d946ef;
-  --secondary-foreground: #e0e0ff;
-  --muted: #2d3456;
-  --muted-foreground: #a0a0c0;
-  --accent: #00f0ff;
-  --accent-foreground: #0a0e27;
+  --primary: #FF6600;
+  --primary-foreground: #ffffff;
+  --sidebar-primary: #FF6600;
+  --sidebar-primary-foreground: #ffffff;
+  --background: #0f0f0f;
+  --foreground: #ffffff;
+  --card: #1a1a1a;
+  --card-foreground: #ffffff;
+  --popover: #1a1a1a;
+  --popover-foreground: #ffffff;
+  --secondary: #FF8533;
+  --secondary-foreground: #ffffff;
+  --muted: #333333;
+  --muted-foreground: #999999;
+  --accent: #FF6600;
+  --accent-foreground: #ffffff;
   --destructive: #ff1744;
-  --destructive-foreground: #e0e0ff;
-  --border: #2d3456;
-  --input: #1a1f3a;
-  --ring: #00f0ff;
-  --chart-1: #00f0ff;
-  --chart-2: #d946ef;
-  --chart-3: #00f0ff;
-  --chart-4: #d946ef;
-  --chart-5: #00f0ff;
-  --sidebar: #0a0e27;
-  --sidebar-foreground: #e0e0ff;
-  --sidebar-accent: #00f0ff;
-  --sidebar-accent-foreground: #0a0e27;
-  --sidebar-border: #2d3456;
-  --sidebar-ring: #00f0ff;
+  --destructive-foreground: #ffffff;
+  --border: #2a2a2a;
+  --input: #1a1a1a;
+  --ring: #FF6600;
+  --chart-1: #FF6600;
+  --chart-2: #FF8533;
+  --chart-3: #FF6600;
+  --chart-4: #FF8533;
+  --chart-5: #FF6600;
+  --sidebar: #0f0f0f;
+  --sidebar-foreground: #ffffff;
+  --sidebar-accent: #FF6600;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: #2a2a2a;
+  --sidebar-ring: #FF6600;
 }
 
 @layer base {
@@ -152,23 +152,35 @@
   }
 
   .neon-glow {
-    @apply shadow-lg shadow-cyan-500/50;
+    @apply shadow-lg shadow-orange-500/50;
   }
 
   .neon-glow-purple {
-    @apply shadow-lg shadow-purple-500/50;
+    @apply shadow-lg shadow-orange-600/50;
   }
 
   .neon-border {
-    @apply border border-cyan-500/50;
+    @apply border border-orange-500/50;
   }
 
   .neon-border-purple {
-    @apply border border-purple-500/50;
+    @apply border border-orange-600/50;
   }
 
   .gradient-text {
-    @apply bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-orange-500 to-orange-400 bg-clip-text text-transparent;
+  }
+
+  .crunchyroll-button {
+    @apply bg-gradient-to-r from-orange-600 to-orange-500 hover:from-orange-700 hover:to-orange-600 text-white font-bold py-3 px-6 rounded-lg transition-all duration-200 shadow-lg hover:shadow-orange-500/50;
+  }
+
+  .crunchyroll-card {
+    @apply bg-gradient-to-br from-slate-900 to-slate-950 border border-orange-500/20 rounded-lg overflow-hidden hover:border-orange-500/50 transition-all duration-300;
+  }
+
+  .crunchyroll-hero {
+    @apply relative overflow-hidden rounded-lg shadow-2xl;
   }
 
   @media (min-width: 640px) {

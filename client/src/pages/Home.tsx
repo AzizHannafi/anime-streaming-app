@@ -148,14 +148,14 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
       {/* Navigation Header */}
-      <header className="sticky top-0 z-40 bg-gradient-to-b from-black/80 to-transparent backdrop-blur-md border-b border-cyan-500/20">
+      <header className="sticky top-0 z-40 bg-gradient-to-b from-black/90 to-black/70 backdrop-blur-md border-b border-orange-500/30">
         <div className="container flex items-center justify-between py-4">
           {/* Logo */}
-          <div className="flex items-center gap-2">
-            <div className="w-10 h-10 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-lg flex items-center justify-center">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 bg-gradient-to-r from-orange-600 to-orange-500 rounded-lg flex items-center justify-center shadow-lg shadow-orange-500/50">
               <span className="text-white font-bold text-lg">A</span>
             </div>
-            <span className="text-xl font-bold gradient-text hidden sm:inline">
+            <span className="text-2xl font-bold gradient-text hidden sm:inline">
               AnimeVerse
             </span>
           </div>
@@ -171,28 +171,28 @@ export default function Home() {
             {/* Genre Filter Button */}
             <button
               onClick={() => setIsGenreFilterOpen(true)}
-              className="hidden sm:flex items-center gap-2 px-4 py-2 rounded-lg bg-white/10 hover:bg-cyan-500/30 text-white transition-all duration-200"
+              className="hidden sm:flex items-center gap-2 px-4 py-2 rounded-lg bg-orange-600/20 hover:bg-orange-600/40 text-orange-400 transition-all duration-200 border border-orange-500/30"
             >
               <Sliders size={20} />
-              <span className="text-sm">Genres</span>
+              <span className="text-sm font-semibold">Genres</span>
             </button>
 
             {/* Favorites Button */}
             <button
-              className="hidden sm:flex items-center gap-2 px-4 py-2 rounded-lg bg-white/10 hover:bg-purple-500/30 text-white transition-all duration-200"
+              className="hidden sm:flex items-center gap-2 px-4 py-2 rounded-lg bg-orange-600/20 hover:bg-orange-600/40 text-orange-400 transition-all duration-200 border border-orange-500/30"
               onClick={() => toast.info(`${favorites.length} favorites saved`)}
             >
               <Heart size={20} />
-              <span className="text-sm">{favorites.length}</span>
+              <span className="text-sm font-semibold">{favorites.length}</span>
             </button>
 
             {/* History Button */}
             <button
-              className="hidden sm:flex items-center gap-2 px-4 py-2 rounded-lg bg-white/10 hover:bg-cyan-500/30 text-white transition-all duration-200"
+              className="hidden sm:flex items-center gap-2 px-4 py-2 rounded-lg bg-orange-600/20 hover:bg-orange-600/40 text-orange-400 transition-all duration-200 border border-orange-500/30"
               onClick={() => toast.info(`${history.length} items in history`)}
             >
               <History size={20} />
-              <span className="text-sm">{history.length}</span>
+              <span className="text-sm font-semibold">{history.length}</span>
             </button>
 
             {/* Mobile Menu Toggle */}
@@ -223,19 +223,19 @@ export default function Home() {
       {/* Main Content */}
       <main className="container py-8 space-y-12">
         {/* Hero Section */}
-        <section className="relative h-96 rounded-lg overflow-hidden neon-border neon-glow group">
+        <section className="relative h-96 rounded-xl overflow-hidden neon-border neon-glow group">
           <img
-            src="https://d2xsxph8kpxj0f.cloudfront.net/310519663052420117/WPMic9wztkxzQqsVQcMx4f/hero-banner-1-Q8qeBFSgHqGLSEMuQTjYCF.webp"
+            src="https://d2xsxph8kpxj0f.cloudfront.net/310519663052420117/WPMic9wztkxzQqsVQcMx4f/crunchyroll-hero-banner-UsH3RM6q2vWbboKeK9GCai.webp"
             alt="Featured"
             className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-transparent flex items-center">
+          <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/50 to-transparent flex items-center">
             <div className="p-8 space-y-4 max-w-md">
-              <h1 className="text-4xl font-bold gradient-text">
-                Welcome to AnimeVerse
+              <h1 className="text-5xl font-bold gradient-text leading-tight">
+                AnimeVerse
               </h1>
-              <p className="text-white/80">
-                Discover thousands of anime with premium streaming quality
+              <p className="text-white/90 text-lg">
+                Stream thousands of anime with premium quality
               </p>
               <button
                 onClick={() => {
@@ -243,8 +243,9 @@ export default function Home() {
                     handlePlayClick(trendingAnime[0]);
                   }
                 }}
-                className="px-6 py-3 bg-gradient-to-r from-cyan-500 to-purple-500 text-white font-semibold rounded-lg hover:shadow-lg hover:shadow-cyan-500/50 transition-all duration-200 transform hover:scale-105"
+                className="crunchyroll-button inline-flex items-center gap-2"
               >
+                <span>▶</span>
                 Watch Now
               </button>
             </div>
@@ -254,7 +255,7 @@ export default function Home() {
         {/* Continue Watching */}
         {history.length > 0 && (
           <section>
-            <h2 className="text-2xl font-bold gradient-text mb-4">
+            <h2 className="text-3xl font-bold gradient-text mb-6 pb-2 border-b border-orange-500/30">
               Continue Watching
             </h2>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
