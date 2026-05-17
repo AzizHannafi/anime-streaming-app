@@ -5,367 +5,381 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
-  --color-popover: var(--popover);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-destructive: var(--destructive);
-  --color-destructive-foreground: var(--destructive-foreground);
-  --color-border: var(--border);
-  --color-input: var(--input);
-  --color-ring: var(--ring);
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
-  --color-sidebar: var(--sidebar);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-ring: var(--sidebar-ring);
+    --radius-sm: calc(var(--radius) - 4px);
+    --radius-md: calc(var(--radius) - 2px);
+    --radius-lg: var(--radius);
+    --radius-xl: calc(var(--radius) + 4px);
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+    --color-card: var(--card);
+    --color-card-foreground: var(--card-foreground);
+    --color-popover: var(--popover);
+    --color-popover-foreground: var(--popover-foreground);
+    --color-primary: var(--primary);
+    --color-primary-foreground: var(--primary-foreground);
+    --color-secondary: var(--secondary);
+    --color-secondary-foreground: var(--secondary-foreground);
+    --color-muted: var(--muted);
+    --color-muted-foreground: var(--muted-foreground);
+    --color-accent: var(--accent);
+    --color-accent-foreground: var(--accent-foreground);
+    --color-destructive: var(--destructive);
+    --color-destructive-foreground: var(--destructive-foreground);
+    --color-border: var(--border);
+    --color-input: var(--input);
+    --color-ring: var(--ring);
+    --color-chart-1: var(--chart-1);
+    --color-chart-2: var(--chart-2);
+    --color-chart-3: var(--chart-3);
+    --color-chart-4: var(--chart-4);
+    --color-chart-5: var(--chart-5);
+    --color-sidebar: var(--sidebar);
+    --color-sidebar-foreground: var(--sidebar-foreground);
+    --color-sidebar-primary: var(--sidebar-primary);
+    --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+    --color-sidebar-accent: var(--sidebar-accent);
+    --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+    --color-sidebar-border: var(--sidebar-border);
+    --color-sidebar-ring: var(--sidebar-ring);
 }
 
 :root {
-  --primary: var(--color-orange-600);
-  --primary-foreground: var(--color-orange-50);
-  --sidebar-primary: var(--color-orange-600);
-  --sidebar-primary-foreground: var(--color-orange-50);
-  --chart-1: var(--color-orange-300);
-  --chart-2: var(--color-orange-500);
-  --chart-3: var(--color-orange-600);
-  --chart-4: var(--color-orange-700);
-  --chart-5: var(--color-orange-800);
-  --radius: 0.65rem;
-  --background: #0f0f0f;
-  --foreground: #ffffff;
-  --card: #141414;
-  --card-foreground: #ffffff;
-  --popover: #1a1a1a;
-  --popover-foreground: #ffffff;
-  --secondary: #1a1a1a;
-  --secondary-foreground: #ffffff;
-  --muted: #666666;
-  --muted-foreground: #999999;
-  --accent: #FF6B35;
-  --accent-foreground: #ffffff;
-  --destructive: #E50914;
-  --destructive-foreground: #ffffff;
-  --border: #333333;
-  --input: #1a1a1a;
-  --ring: #FF6B35;
-  --sidebar: #0f0f0f;
-  --sidebar-foreground: #ffffff;
-  --sidebar-accent: #FF6B35;
-  --sidebar-accent-foreground: #ffffff;
-  --sidebar-border: #333333;
-  --sidebar-ring: #FF6B35;
+    --primary: var(--color-orange-600);
+    --primary-foreground: var(--color-orange-50);
+    --sidebar-primary: var(--color-orange-600);
+    --sidebar-primary-foreground: var(--color-orange-50);
+    --chart-1: var(--color-orange-300);
+    --chart-2: var(--color-orange-500);
+    --chart-3: var(--color-orange-600);
+    --chart-4: var(--color-orange-700);
+    --chart-5: var(--color-orange-800);
+    --radius: 0.65rem;
+    --background: #0f0f0f;
+    --foreground: #ffffff;
+    --card: #141414;
+    --card-foreground: #ffffff;
+    --popover: #1a1a1a;
+    --popover-foreground: #ffffff;
+    --secondary: #1a1a1a;
+    --secondary-foreground: #ffffff;
+    --muted: #666666;
+    --muted-foreground: #999999;
+    --accent: #FF6B35;
+    --accent-foreground: #ffffff;
+    --destructive: #E50914;
+    --destructive-foreground: #ffffff;
+    --border: #333333;
+    --input: #1a1a1a;
+    --ring: #FF6B35;
+    --sidebar: #0f0f0f;
+    --sidebar-foreground: #ffffff;
+    --sidebar-accent: #FF6B35;
+    --sidebar-accent-foreground: #ffffff;
+    --sidebar-border: #333333;
+    --sidebar-ring: #FF6B35;
 }
 
 .dark {
-  --primary: var(--color-orange-600);
-  --primary-foreground: var(--color-orange-50);
-  --sidebar-primary: var(--color-orange-600);
-  --sidebar-primary-foreground: var(--color-orange-50);
-  --background: #0f0f0f;
-  --foreground: #ffffff;
-  --card: #141414;
-  --card-foreground: #ffffff;
-  --popover: #1a1a1a;
-  --popover-foreground: #ffffff;
-  --secondary: #1a1a1a;
-  --secondary-foreground: #ffffff;
-  --muted: #666666;
-  --muted-foreground: #999999;
-  --accent: #FF6B35;
-  --accent-foreground: #ffffff;
-  --destructive: #E50914;
-  --destructive-foreground: #ffffff;
-  --border: #333333;
-  --input: #1a1a1a;
-  --ring: #FF6B35;
-  --chart-1: var(--color-orange-300);
-  --chart-2: var(--color-orange-500);
-  --chart-3: var(--color-orange-600);
-  --chart-4: var(--color-orange-700);
-  --chart-5: var(--color-orange-800);
-  --sidebar: #0f0f0f;
-  --sidebar-foreground: #ffffff;
-  --sidebar-accent: #FF6B35;
-  --sidebar-accent-foreground: #ffffff;
-  --sidebar-border: #333333;
-  --sidebar-ring: #FF6B35;
+    --primary: var(--color-orange-600);
+    --primary-foreground: var(--color-orange-50);
+    --sidebar-primary: var(--color-orange-600);
+    --sidebar-primary-foreground: var(--color-orange-50);
+    --background: #0f0f0f;
+    --foreground: #ffffff;
+    --card: #141414;
+    --card-foreground: #ffffff;
+    --popover: #1a1a1a;
+    --popover-foreground: #ffffff;
+    --secondary: #1a1a1a;
+    --secondary-foreground: #ffffff;
+    --muted: #666666;
+    --muted-foreground: #999999;
+    --accent: #FF6B35;
+    --accent-foreground: #ffffff;
+    --destructive: #E50914;
+    --destructive-foreground: #ffffff;
+    --border: #333333;
+    --input: #1a1a1a;
+    --ring: #FF6B35;
+    --chart-1: var(--color-orange-300);
+    --chart-2: var(--color-orange-500);
+    --chart-3: var(--color-orange-600);
+    --chart-4: var(--color-orange-700);
+    --chart-5: var(--color-orange-800);
+    --sidebar: #0f0f0f;
+    --sidebar-foreground: #ffffff;
+    --sidebar-accent: #FF6B35;
+    --sidebar-accent-foreground: #ffffff;
+    --sidebar-border: #333333;
+    --sidebar-ring: #FF6B35;
 }
 
 @layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
-  button:not(:disabled),
-  [role="button"]:not([aria-disabled="true"]),
-  [type="button"]:not(:disabled),
-  [type="submit"]:not(:disabled),
-  [type="reset"]:not(:disabled),
-  a[href],
-  select:not(:disabled),
-  input[type="checkbox"]:not(:disabled),
-  input[type="radio"]:not(:disabled) {
-    @apply cursor-pointer;
-  }
+    * {
+        @apply border-border outline-ring/50;
+    }
+    body {
+        @apply bg-background text-foreground;
+    }
+    button:not(:disabled),
+    [role="button"]:not([aria-disabled="true"]),
+    [type="button"]:not(:disabled),
+    [type="submit"]:not(:disabled),
+    [type="reset"]:not(:disabled),
+    a[href],
+    select:not(:disabled),
+    input[type="checkbox"]:not(:disabled),
+    input[type="radio"]:not(:disabled) {
+        @apply cursor-pointer;
+    }
 }
 
 @layer components {
-  .container {
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-
-  .flex {
-    min-height: 0;
-    min-width: 0;
-  }
-
-  /* Netflix-inspired hero section */
-  .netflix-hero {
-    @apply relative w-full pt-20 pb-8 overflow-hidden;
-    height: 60vh;
-    background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 50%, #0f0f0f 100%);
-  }
-
-  .netflix-hero-backdrop {
-    @apply absolute inset-0 -z-10;
-  }
-
-  .netflix-hero-backdrop-image {
-    @apply w-full h-full object-cover;
-  }
-
-  .netflix-hero-overlay {
-    @apply absolute inset-0 bg-gradient-to-r from-black via-black/50 to-transparent;
-  }
-
-  .netflix-hero-content {
-    @apply relative z-10 max-w-2xl space-y-6 h-full flex flex-col justify-end pb-12;
-  }
-
-  .netflix-hero-title {
-    @apply text-5xl md:text-6xl font-bold tracking-tight;
-  }
-
-  .netflix-hero-description {
-    @apply text-base md:text-lg text-gray-300 leading-relaxed max-w-xl line-clamp-3;
-  }
-
-  .netflix-hero-actions {
-    @apply flex items-center gap-4 pt-4;
-  }
-
-  .netflix-cta {
-    @apply inline-flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-orange-600 to-orange-500 text-white font-bold rounded-lg hover:from-orange-700 hover:to-orange-600 transition-all duration-200 shadow-lg shadow-orange-500/50;
-  }
-
-  .netflix-cta-secondary {
-    @apply inline-flex items-center gap-2 px-8 py-3 bg-white/20 text-white font-bold rounded-lg hover:bg-white/30 transition-all duration-200 backdrop-blur-sm;
-  }
-
-  /* Netflix-inspired rail/section */
-  .netflix-rail {
-    @apply w-full py-8 px-4 md:px-8 mt-12;
-  }
-
-  .netflix-rail:first-of-type {
-    @apply mt-20 md:mt-32;
-  }
-
-  .netflix-rail-heading {
-    @apply mb-6 space-y-1;
-  }
-
-  .netflix-rail-heading h2 {
-    @apply text-2xl md:text-3xl font-bold;
-  }
-
-  .netflix-rail-heading p {
-    @apply text-sm text-gray-500;
-  }
-
-  /* Netflix carousel */
-  .netflix-carousel {
-    @apply relative w-full;
-  }
-
-  .netflix-carousel-container {
-    @apply grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 md:gap-4 pb-2;
-  }
-
-  .netflix-carousel-item {
-    @apply relative w-full;
-    aspect-ratio: 2 / 3;
-  }
-
-  .netflix-poster {
-    @apply w-full h-full rounded-lg overflow-hidden relative;
-    transition: transform 0.3s ease;
-  }
-
-  .netflix-carousel-item:hover .netflix-poster {
-    @apply transform scale-105 shadow-2xl;
-  }
-
-  .netflix-poster-image {
-    @apply w-full h-full object-cover;
-  }
-
-  .netflix-poster-overlay {
-    @apply absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 transition-opacity duration-300;
-  }
-
-  .netflix-carousel-item:hover .netflix-poster-overlay {
-    @apply opacity-100;
-  }
-
-  .netflix-poster-info {
-    @apply absolute bottom-0 left-0 right-0 p-3 space-y-2 opacity-0 transition-opacity duration-300;
-  }
-
-  .netflix-carousel-item:hover .netflix-poster-info {
-    @apply opacity-100;
-  }
-
-  .netflix-poster-title {
-    @apply font-bold text-xs md:text-sm line-clamp-2;
-  }
-
-  .netflix-poster-rating {
-    @apply text-xs text-gray-300 flex items-center gap-1;
-  }
-
-  .netflix-play-button {
-    @apply absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 transition-opacity duration-300;
-  }
-
-  .netflix-carousel-item:hover .netflix-play-button {
-    @apply opacity-100;
-  }
-
-  .netflix-play-icon {
-    @apply w-12 h-12 bg-orange-600 rounded-full flex items-center justify-center text-white shadow-lg;
-  }
-
-  .netflix-carousel-arrow {
-    @apply hidden;
-  }
-
-  /* Netflix-inspired grid */
-  .netflix-grid {
-    @apply grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 md:gap-4 px-4 md:px-8 py-8;
-  }
-
-  .netflix-grid-item {
-    @apply relative cursor-pointer;
-  }
-
-  /* Netflix-inspired detail page */
-  .netflix-detail-hero {
-    @apply relative h-96 md:h-96 overflow-hidden;
-  }
-
-  .netflix-detail-backdrop {
-    @apply absolute inset-0 -z-10;
-  }
-
-  .netflix-detail-backdrop-image {
-    @apply w-full h-full object-cover;
-  }
-
-  .netflix-detail-overlay {
-    @apply absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent;
-  }
-
-  .netflix-detail-content {
-    @apply relative z-10 h-full flex flex-col justify-end p-4 md:p-8;
-  }
-
-  .netflix-detail-info {
-    @apply max-w-2xl space-y-4;
-  }
-
-  .netflix-detail-title {
-    @apply text-4xl md:text-6xl font-bold;
-  }
-
-  .netflix-detail-meta {
-    @apply flex items-center gap-4 text-sm text-gray-300;
-  }
-
-  .netflix-detail-description {
-    @apply text-base text-gray-200 line-clamp-3;
-  }
-
-  /* Crunchyroll button style */
-  .crunchyroll-button {
-    @apply px-6 py-3 bg-gradient-to-r from-orange-600 to-orange-500 text-white font-semibold rounded-lg hover:shadow-lg hover:shadow-orange-500/50 transition-all duration-200 transform hover:scale-105 inline-flex items-center gap-2;
-  }
-
-  /* Neon border effect */
-  .neon-border {
-    @apply border border-orange-500/30 rounded-lg;
-  }
-
-  .neon-glow {
-    @apply shadow-lg shadow-orange-500/20;
-  }
-
-  /* Gradient text */
-  .gradient-text {
-    @apply bg-gradient-to-r from-orange-400 to-orange-600 bg-clip-text text-transparent;
-  }
-
-  @media (min-width: 640px) {
     .container {
-      padding-left: 1.5rem;
-      padding-right: 1.5rem;
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 1rem;
+        padding-right: 1rem;
     }
-  }
 
-  @media (min-width: 1024px) {
-    .container {
-      padding-left: 2rem;
-      padding-right: 2rem;
-      max-width: 1280px;
+    .flex {
+        min-height: 0;
+        min-width: 0;
     }
-  }
+
+    /* =====================
+       HOME HERO (banner)
+       ===================== */
+    .netflix-hero {
+        @apply relative w-full pt-20 pb-8 overflow-hidden;
+        height: 60vh;
+        background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 50%, #0f0f0f 100%);
+    }
+
+    /* z-0: sits at the bottom of the stack */
+    .netflix-hero-backdrop {
+        @apply absolute inset-0 z-0;
+    }
+
+    .netflix-hero-backdrop-image {
+        @apply w-full h-full object-cover;
+    }
+
+    /* z-10: gradient overlay on top of image */
+    .netflix-hero-overlay {
+        @apply absolute inset-0 z-10 bg-gradient-to-r from-black via-black/50 to-transparent;
+    }
+
+    /* z-20: text/buttons on top of everything */
+    .netflix-hero-content {
+        @apply relative z-20 max-w-2xl space-y-6 h-full flex flex-col justify-end pb-12;
+    }
+
+    .netflix-hero-title {
+        @apply text-5xl md:text-6xl font-bold tracking-tight;
+    }
+
+    .netflix-hero-description {
+        @apply text-base md:text-lg text-gray-300 leading-relaxed max-w-xl line-clamp-3;
+    }
+
+    .netflix-hero-actions {
+        @apply flex items-center gap-4 pt-4;
+    }
+
+    .netflix-cta {
+        @apply inline-flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-orange-600 to-orange-500 text-white font-bold rounded-lg hover:from-orange-700 hover:to-orange-600 transition-all duration-200 shadow-lg shadow-orange-500/50;
+    }
+
+    .netflix-cta-secondary {
+        @apply inline-flex items-center gap-2 px-8 py-3 bg-white/20 text-white font-bold rounded-lg hover:bg-white/30 transition-all duration-200 backdrop-blur-sm;
+    }
+
+    /* =====================
+       DETAIL PAGE HERO
+       ===================== */
+    .netflix-detail-hero {
+        @apply relative h-96 md:h-[500px] overflow-hidden;
+    }
+
+    /* z-0: sits at the bottom of the stack */
+    .netflix-detail-backdrop {
+        @apply absolute inset-0 z-0;
+    }
+
+    .netflix-detail-backdrop-image {
+        @apply w-full h-full object-cover;
+    }
+
+    /* z-10: gradient overlay on top of image */
+    .netflix-detail-overlay {
+        @apply absolute inset-0 z-10 bg-gradient-to-t from-black via-black/50 to-transparent;
+    }
+
+    /* z-20: text/buttons on top of everything */
+    .netflix-detail-content {
+        margin-left:10% ;
+        @apply relative z-20 h-full flex flex-col justify-end p-4 md:p-8;
+    }
+
+    .netflix-detail-info {
+        @apply max-w-2xl space-y-4;
+    }
+
+    .netflix-detail-title {
+        @apply text-4xl md:text-6xl font-bold;
+    }
+
+    .netflix-detail-meta {
+        @apply flex items-center gap-4 text-sm text-gray-300;
+    }
+
+    .netflix-detail-description {
+        @apply text-base text-gray-200 line-clamp-3;
+    }
+
+    /* =====================
+       RAIL / CAROUSEL
+       ===================== */
+    .netflix-rail {
+        @apply w-full py-8 px-4 md:px-8 mt-12;
+    }
+
+    .netflix-rail:first-of-type {
+        @apply mt-20 md:mt-32;
+    }
+
+    .netflix-rail-heading {
+        @apply mb-6 space-y-1;
+    }
+
+    .netflix-rail-heading h2 {
+        @apply text-2xl md:text-3xl font-bold;
+    }
+
+    .netflix-rail-heading p {
+        @apply text-sm text-gray-500;
+    }
+
+    .netflix-carousel {
+        @apply relative w-full;
+    }
+
+    .netflix-carousel-container {
+        @apply grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 md:gap-4 pb-2;
+    }
+
+    .netflix-carousel-item {
+        @apply relative w-full;
+        aspect-ratio: 2 / 3;
+    }
+
+    .netflix-poster {
+        @apply w-full h-full rounded-lg overflow-hidden relative;
+        transition: transform 0.3s ease;
+    }
+
+    .netflix-carousel-item:hover .netflix-poster {
+        @apply transform scale-105 shadow-2xl;
+    }
+
+    .netflix-poster-image {
+        @apply w-full h-full object-cover;
+    }
+
+    .netflix-poster-overlay {
+        @apply absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 transition-opacity duration-300;
+    }
+
+    .netflix-carousel-item:hover .netflix-poster-overlay {
+        @apply opacity-100;
+    }
+
+    .netflix-poster-info {
+        @apply absolute bottom-0 left-0 right-0 p-3 space-y-2 opacity-0 transition-opacity duration-300;
+    }
+
+    .netflix-carousel-item:hover .netflix-poster-info {
+        @apply opacity-100;
+    }
+
+    .netflix-poster-title {
+        @apply font-bold text-xs md:text-sm line-clamp-2;
+    }
+
+    .netflix-poster-rating {
+        @apply text-xs text-gray-300 flex items-center gap-1;
+    }
+
+    .netflix-play-button {
+        @apply absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 transition-opacity duration-300;
+    }
+
+    .netflix-carousel-item:hover .netflix-play-button {
+        @apply opacity-100;
+    }
+
+    .netflix-play-icon {
+        @apply w-12 h-12 bg-orange-600 rounded-full flex items-center justify-center text-white shadow-lg;
+    }
+
+    .netflix-carousel-arrow {
+        @apply hidden;
+    }
+
+    /* =====================
+       GRID
+       ===================== */
+    .netflix-grid {
+        @apply grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 md:gap-4 px-4 md:px-8 py-8;
+    }
+
+    .netflix-grid-item {
+        @apply relative cursor-pointer;
+    }
+
+    /* =====================
+       MISC UTILITIES
+       ===================== */
+    .crunchyroll-button {
+        @apply px-6 py-3 bg-gradient-to-r from-orange-600 to-orange-500 text-white font-semibold rounded-lg hover:shadow-lg hover:shadow-orange-500/50 transition-all duration-200 transform hover:scale-105 inline-flex items-center gap-2;
+    }
+
+    .neon-border {
+        @apply border border-orange-500/30 rounded-lg;
+    }
+
+    .neon-glow {
+        @apply shadow-lg shadow-orange-500/20;
+    }
+
+    .gradient-text {
+        @apply bg-gradient-to-r from-orange-400 to-orange-600 bg-clip-text text-transparent;
+    }
+
+    @media (min-width: 640px) {
+        .container {
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+        }
+    }
+
+    @media (min-width: 1024px) {
+        .container {
+            padding-left: 2rem;
+            padding-right: 2rem;
+            max-width: 1280px;
+        }
+    }
 }
 
 /* Scrollbar hiding */
 .scrollbar-hide {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
 
 .scrollbar-hide::-webkit-scrollbar {
-  display: none;
+    display: none;
 }
