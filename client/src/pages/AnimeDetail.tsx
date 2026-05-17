@@ -100,7 +100,7 @@ export default function AnimeDetail() {
         </div>
         <div className="netflix-detail-overlay" />
         <div className="netflix-detail-content">
-          <div className="netflix-detail-info">
+          <div className="netflix-detail-info container max-w-3xl mx-auto">
             <h1 className="netflix-detail-title">
               {anime.title || anime.name}
             </h1>
