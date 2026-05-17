@@ -193,7 +193,11 @@
 
   /* Netflix-inspired rail/section */
   .netflix-rail {
-    @apply w-full py-8 px-4 md:px-8;
+    @apply w-full py-8 px-4 md:px-8 mt-12;
+  }
+
+  .netflix-rail:first-of-type {
+    @apply mt-20 md:mt-32;
   }
 
   .netflix-rail-heading {
@@ -210,32 +214,16 @@
 
   /* Netflix carousel */
   .netflix-carousel {
-    @apply relative group w-full;
+    @apply relative w-full;
   }
 
   .netflix-carousel-container {
-    @apply flex gap-2 md:gap-4 overflow-x-auto scrollbar-hide pb-2;
-    scroll-behavior: smooth;
+    @apply grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 md:gap-4 pb-2;
   }
 
   .netflix-carousel-item {
-    @apply flex-shrink-0 group/item relative;
-    width: 150px;
-    height: 225px;
-  }
-
-  @media (min-width: 768px) {
-    .netflix-carousel-item {
-      width: 180px;
-      height: 270px;
-    }
-  }
-
-  @media (min-width: 1024px) {
-    .netflix-carousel-item {
-      width: 200px;
-      height: 300px;
-    }
+    @apply group/item relative w-full;
+    aspect-ratio: 2 / 3;
   }
 
   .netflix-poster {
@@ -276,15 +264,7 @@
   }
 
   .netflix-carousel-arrow {
-    @apply absolute top-1/2 -translate-y-1/2 z-10 p-2 bg-black/50 hover:bg-orange-600/50 text-white rounded-full transition-all duration-200 opacity-0 group-hover:opacity-100;
-  }
-
-  .netflix-carousel-arrow.left {
-    @apply left-2 md:left-4;
-  }
-
-  .netflix-carousel-arrow.right {
-    @apply right-2 md:right-4;
+    @apply hidden;
   }
 
   /* Netflix-inspired grid */

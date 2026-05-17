@@ -141,7 +141,7 @@ export default function AnimeDetail() {
       </div>
 
       {/* Details Section */}
-      <div className="container py-12 space-y-12">
+      <div className="container py-12 md:py-20 space-y-12 md:space-y-16">
         {/* About */}
         <section className="space-y-4">
           <h2 className="text-2xl font-bold">About</h2>
