@@ -119,20 +119,20 @@ export default function VideoPlayerModal({
 
         {/* Info Sidebar - Only visible when paused or on mouse move */}
         {showSidebar && (
-          <div className="w-1/3 bg-gradient-to-b from-slate-900 to-slate-950 border-l border-cyan-500/30 overflow-y-auto">
+          <div className="w-1/3 bg-gradient-to-b from-slate-900/95 to-black border-l border-orange-600/40 overflow-y-auto">
             {/* Anime Info */}
             <div className="p-6 space-y-6">
               {/* Title */}
               <div>
-                <h2 className="text-2xl font-bold text-cyan-400 mb-2">
+                <h2 className="text-2xl font-bold text-orange-400 mb-2">
                   {anime.title || anime.name}
                 </h2>
                 <div className="flex items-center gap-3">
-                  <span className="px-3 py-1 bg-purple-500/30 text-purple-300 rounded-full text-sm font-semibold">
+                  <span className="px-3 py-1 bg-orange-600/30 text-orange-300 rounded-full text-sm font-semibold">
                     {anime.vote_average.toFixed(1)} ⭐
                   </span>
                   {anime.status && (
-                    <span className="px-3 py-1 bg-cyan-500/20 text-cyan-300 rounded-full text-sm">
+                    <span className="px-3 py-1 bg-orange-500/20 text-orange-300 rounded-full text-sm">
                       {anime.status}
                     </span>
                   )}
@@ -141,7 +141,7 @@ export default function VideoPlayerModal({
 
               {/* Overview */}
               <div>
-                <h3 className="text-sm font-semibold text-white/80 mb-2 uppercase tracking-wider">
+                <h3 className="text-sm font-semibold text-orange-400 mb-2 uppercase tracking-wider border-b border-orange-600/30 pb-2">
                   Synopsis
                 </h3>
                 <p className="text-white/70 text-sm leading-relaxed">
@@ -153,16 +153,16 @@ export default function VideoPlayerModal({
               {(anime.number_of_episodes || anime.number_of_seasons) && (
                 <div className="grid grid-cols-2 gap-4">
                   {anime.number_of_episodes && (
-                    <div className="bg-slate-800/50 border border-cyan-500/20 rounded-lg p-3">
-                      <p className="text-cyan-400 text-xs font-semibold uppercase">Episodes</p>
+                    <div className="bg-orange-600/20 border border-orange-500/40 rounded-lg p-3">
+                      <p className="text-orange-400 text-xs font-semibold uppercase">Episodes</p>
                       <p className="text-white text-lg font-bold">
                         {anime.number_of_episodes}
                       </p>
                     </div>
                   )}
                   {anime.number_of_seasons && (
-                    <div className="bg-slate-800/50 border border-cyan-500/20 rounded-lg p-3">
-                      <p className="text-cyan-400 text-xs font-semibold uppercase">Seasons</p>
+                    <div className="bg-orange-600/20 border border-orange-500/40 rounded-lg p-3">
+                      <p className="text-orange-400 text-xs font-semibold uppercase">Seasons</p>
                       <p className="text-white text-lg font-bold">
                         {anime.number_of_seasons}
                       </p>
@@ -174,14 +174,14 @@ export default function VideoPlayerModal({
               {/* Genres */}
               {anime.genres && anime.genres.length > 0 && (
                 <div>
-                  <h3 className="text-sm font-semibold text-white/80 mb-2 uppercase tracking-wider">
+                  <h3 className="text-sm font-semibold text-orange-400 mb-2 uppercase tracking-wider border-b border-orange-600/30 pb-2">
                     Genres
                   </h3>
                   <div className="flex flex-wrap gap-2">
                     {anime.genres.map((genre) => (
                       <span
                         key={genre.id}
-                        className="px-3 py-1 bg-purple-500/20 text-purple-300 rounded-full text-xs font-medium"
+                        className="px-3 py-1 bg-orange-600/20 text-orange-300 rounded-full text-xs font-medium"
                       >
                         {genre.name}
                       </span>
@@ -193,7 +193,7 @@ export default function VideoPlayerModal({
               {/* Release Date */}
               {(anime.release_date || anime.first_air_date) && (
                 <div>
-                  <h3 className="text-sm font-semibold text-white/80 mb-2 uppercase tracking-wider">
+                  <h3 className="text-sm font-semibold text-orange-400 mb-2 uppercase tracking-wider border-b border-orange-600/30 pb-2">
                     Release Date
                   </h3>
                   <p className="text-white/70">
