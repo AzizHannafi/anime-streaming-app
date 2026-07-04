@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "wouter";
-import { Play, Heart, History, Search } from "lucide-react";
+import { Play, Heart, History, SlidersHorizontal } from "lucide-react";
 import { toast } from "sonner";
 import { getTrendingAnime, getPopularAnime, getTopRatedAnime, AnimeItem, getPosterUrl } from "@/lib/tmdb";
 import { useFavorites } from "@/hooks/useLocalStorage";
@@ -86,6 +86,13 @@ export default function Home() {
 
           {/* Right Actions */}
           <div className="flex items-center gap-4">
+            <button
+              className="p-2 hover:bg-white/10 rounded-full transition-all"
+              onClick={() => navigate("/search")}
+              title="Browse & Filters"
+            >
+              <SlidersHorizontal size={24} />
+            </button>
             <button
               className="p-2 hover:bg-white/10 rounded-full transition-all"
               onClick={() => navigate("/favorites")}
